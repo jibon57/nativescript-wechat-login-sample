@@ -1,0 +1,25 @@
+Copying template files...
+Platform android successfully added. v5.1.0
+Executing before-shouldPrepare hook from /Users/jibon/Desktop/test/hooks/before-shouldPrepare/nativescript-dev-webpack.js
+Executing before-cleanApp hook from /Users/jibon/Desktop/test/hooks/before-cleanApp/nativescript-dev-webpack.js
+Executing before-prepare hook from /Users/jibon/Desktop/test/hooks/before-prepare/nativescript-dev-typescript.js
+Found peer TypeScript 3.1.6
+Preparing project...
+Executing before-prepareJSApp hook from /Users/jibon/Desktop/test/hooks/before-prepareJSApp/nativescript-dev-webpack.js
+Successfully prepared plugin nativescript-angular for android.
+Successfully prepared plugin nativescript-theme-core for android.
+Successfully prepared plugin tns-core-modules for android.
+Successfully prepared plugin nativescript-intl for android.
+Successfully prepared plugin tns-core-modules-widgets for android.
+Project successfully prepared (android)
+Executing after-prepare hook from /Users/jibon/Desktop/test/hooks/after-prepare/nativescript-dev-webpack.js
+Building project...
+Gradle build...
+	 + setting applicationId
+	 + applying user-defined configuration from /Users/jibon/Desktop/test/App_Resources/Android/app.gradle
+Using support library version 28.0.0
+	 + adding nativescript runtime package dependency: nativescript-optimized-with-inspector
+	 + adding aar plugin dependency: /Users/jibon/Desktop/test/node_modules/tns-core-modules-widgets/platforms/android/widgets-release.aar
+	 + adding jar plugin dependency: /Users/jibon/Desktop/test/App_Resources/Android/libs/wechat-sdk-android-with-mta-5.3.1.jar
+Project successfully built.
+The build result is located at: /Users/jibon/Desktop/test/platforms/android/app/build/outputs/apk/debug/app-debug.apk

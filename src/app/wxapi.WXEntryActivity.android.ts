@@ -15,12 +15,12 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
             setActivityCallbacks(this);
         }
 
-        let api = com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(this, "wxd930ea5d5a258f4f", false);
+        console.log("onCreate");
 
-        api.registerApp("wxd930ea5d5a258f4f");
+        this.api = com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(this, "wxd930ea5d5a258f4f", false);
 
         try {
-            api.handleIntent(this.getIntent(), this);
+            this.api.handleIntent(this.getIntent(), this);
         } catch (e) {
             console.log(e);
         }
@@ -41,7 +41,7 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
         console.log("onResp");
     }
     public onReq(res: com.tencent.mm.opensdk.modelbase.BaseReq) {
-        console.log("onReq");
+        console.log("onReq: " + res.openId);
     }
 
     public onSaveInstanceState(outState: android.os.Bundle): void {

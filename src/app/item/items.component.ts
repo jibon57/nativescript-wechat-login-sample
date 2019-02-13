@@ -11,10 +11,11 @@ import { ItemService } from "./item.service";
 export class ItemsComponent implements OnInit {
     items: Array<Item>;
 
-    public api;
+    public api: com.tencent.mm.opensdk.openapi.IWXAPI;
     constructor(private itemService: ItemService) {
 
         this.api = com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(app.android.context, "wxd930ea5d5a258f4f", false);
+        this.api.registerApp("wxd930ea5d5a258f4f");
 
     }
 
@@ -25,7 +26,8 @@ export class ItemsComponent implements OnInit {
     public login() {
         let req = new com.tencent.mm.opensdk.modelmsg.SendAuth.Req();
         req.scope = "snsapi_userinfo";
-        req.state = "none";
-        this.api.sendReq(req);
+        req.state = "wechat_sdk_demo_test";
+        let tt = this.api.sendReq(req);
+        console.log(tt);
     }
 }

@@ -1,6 +1,7 @@
 import { setActivityCallbacks, AndroidActivityCallbacks } from "tns-core-modules/ui/frame";
 
 @JavaProxy("net.sourceforge.simcpux.wxapi.WXEntryActivity")
+@Interfaces([com.tencent.mm.opensdk.openapi.IWXAPIEventHandler])
 class WXEntryActivity extends android.support.v7.app.AppCompatActivity implements com.tencent.mm.opensdk.openapi.IWXAPIEventHandler {
     public isNativeScriptActivity;
 
@@ -22,6 +23,7 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
         try {
             this.api.handleIntent(this.getIntent(), this);
         } catch (e) {
+            console.log("handleIntent error");
             console.log(e);
         }
 
@@ -39,6 +41,7 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
 
     public onResp(res: com.tencent.mm.opensdk.modelbase.BaseResp) {
         console.log("onResp");
+        console.dir(res);
     }
     public onReq(res: com.tencent.mm.opensdk.modelbase.BaseReq) {
         console.log("onReq: " + res.openId);

@@ -8,8 +8,5 @@ import * as app from "application";
 })
 export class AppComponent {
     constructor() {
-        console.log("go");
-
-
     }
 }

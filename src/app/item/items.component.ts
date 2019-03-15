@@ -15,8 +15,6 @@ export class ItemsComponent implements OnInit {
     constructor(private itemService: ItemService) {
 
         this.api = com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(app.android.context, "wxd930ea5d5a258f4f", false);
-        this.api.registerApp("wxd930ea5d5a258f4f");
-
     }
 
     ngOnInit(): void {

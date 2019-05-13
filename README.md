@@ -37,11 +37,11 @@ export class AppComponent implements OnInit {
     ngOnInit() {
        let t = this;
        if (app.android) {
-            app.android.on('wxapiresponse', wxResponseHandle, this);
+            app.android.on('wxResponse', wxResponseHandle, this);
         }
 
         function wxResponseHandle(res) {
-            app.android.off("wxapiresponse", wxResponseHandle);
+            app.android.off("wxResponse", wxResponseHandle);
             console.log("wxResponse");
             console.dir(res.object);
             t.ngZone.run(() => {

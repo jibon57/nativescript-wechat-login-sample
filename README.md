@@ -9,7 +9,9 @@ Android:
 
 3) home.component.ts
 
-4) AppRegister.android.ts (optional)
+4) app.component.ts
+
+5) AppRegister.android.ts (optional)
 
 
 

@@ -1,0 +1,11 @@
+{
+  "name": "nativescript-wechatsdk",
+  "version": "0.0.1",
+  "main": "index.js",
+  "nativescript": {
+    "platforms": {
+      "android": "3.4.1",
+	  "ios": "3.4.1"
+    }
+  }
+}

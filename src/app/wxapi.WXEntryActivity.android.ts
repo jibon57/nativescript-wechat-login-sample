@@ -1,6 +1,11 @@
 import { setActivityCallbacks, AndroidActivityCallbacks } from "tns-core-modules/ui/frame";
+const BaseResp = com.tencent.mm.opensdk.modelbase.BaseResp;
+import * as app from "tns-core-modules/application";
+import { AndroidActivityEventData } from "tns-core-modules/application";
 
-@JavaProxy("net.sourceforge.simcpux.wxapi.WXEntryActivity")
+declare var android;
+
+@JavaProxy("com.myna.hahama.wxapi.WXEntryActivity")
 @Interfaces([com.tencent.mm.opensdk.openapi.IWXAPIEventHandler])
 class WXEntryActivity extends android.support.v7.app.AppCompatActivity implements com.tencent.mm.opensdk.openapi.IWXAPIEventHandler {
     public isNativeScriptActivity;
@@ -9,7 +14,7 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
 
     private api: com.tencent.mm.opensdk.openapi.IWXAPI;
 
-    public onCreate(savedInstanceState: android.os.Bundle): void {
+    public onCreate(savedInstanceState): void {
 
         this.isNativeScriptActivity = true;
         if (!this._callbacks) {
@@ -30,24 +35,32 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
         this._callbacks.onCreate(this, savedInstanceState, super.onCreate);
     }
 
-    public onNewIntent(intent) {
-        super.onNewIntent(intent);
-
-        console.log("onNewIntent");
-
-        this.setIntent(intent);
-        this.api.handleIntent(intent, this);
-    }
-
     public onResp(res: com.tencent.mm.opensdk.modelbase.BaseResp) {
         console.log("onResp");
         console.dir(res);
+        switch (res.errCode) {
+            case BaseResp.ErrCode.ERR_OK:
+                setTimeout(() => {
+                    app.notify(<AndroidActivityEventData>{
+                        eventName: 'wxApiResponse',
+                        object: res,
+                        activity: this
+                    });
+                }, 500);
+                break;
+            case BaseResp.ErrCode.ERR_USER_CANCEL:
+                console.log("user canceled");
+                break;
+            case BaseResp.ErrCode.ERR_AUTH_DENIED:
+                console.log("user refused to authorize");
+                break;
+        }
     }
     public onReq(res: com.tencent.mm.opensdk.modelbase.BaseReq) {
         console.log("onReq: " + res.openId);
     }
 
-    public onSaveInstanceState(outState: android.os.Bundle): void {
+    public onSaveInstanceState(outState): void {
         this._callbacks.onSaveInstanceState(this, outState, super.onSaveInstanceState);
     }
 
@@ -71,7 +84,7 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
         this._callbacks.onRequestPermissionsResult(this, requestCode, permissions, grantResults, undefined /*TODO: Enable if needed*/);
     }
 
-    public onActivityResult(requestCode: number, resultCode: number, data: android.content.Intent): void {
+    public onActivityResult(requestCode: number, resultCode: number, data): void {
         this._callbacks.onActivityResult(this, requestCode, resultCode, data, super.onActivityResult);
     }
 }

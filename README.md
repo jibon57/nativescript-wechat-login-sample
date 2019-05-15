@@ -1,4 +1,4 @@
-Example of Wechat Login for NativeScript. Open bellow files to check the code.
+Example of Wechat Login for NativeScript. Open this files to check the code.
 
 Android:
 ========

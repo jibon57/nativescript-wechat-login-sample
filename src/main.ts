@@ -6,7 +6,7 @@ import { AppModule } from "./app/app.module";
 import * as app from "tns-core-modules/application";
 
 if (app.ios) {
-    const setupAppDeligate = require('./app/getappdelegate').setupAppDeligate;
+    const setupAppDeligate = require('./app/getappdelegate.ios').setupAppDeligate;
     setupAppDeligate();
 }
 

@@ -1,4 +1,6 @@
 declare var android;
+
+// YOUR_APP_ID.wxapi.WXEntryActivity 
 @JavaProxy("net.sourceforge.simcpux.AppRegister")
 class AppRegister extends android.content.BroadcastReceiver {
     public onReceive(context, intent) {

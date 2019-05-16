@@ -1,6 +1,6 @@
 {
     "nativescript": {
-        "id": "com.myna.hahama"
+        "id": "net.sourceforge.simcpux"
     },
     "description": "NativeScript Application",
     "license": "SEE LICENSE IN <your-license-filename>",
@@ -29,7 +29,7 @@
         "@nativescript/schematics": "~0.5.1",
         "@ngtools/webpack": "~7.2.0",
         "nativescript-dev-typescript": "~0.9.0",
-        "nativescript-dev-webpack": "~0.20.3"
+        "nativescript-dev-webpack": "0.22.0"
     },
     "gitHead": "9b6565a4513375a33a59c44262dfc1d818a8205e",
     "readme": "NativeScript Application"

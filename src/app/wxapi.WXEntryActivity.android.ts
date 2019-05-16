@@ -5,7 +5,8 @@ import { AndroidActivityEventData } from "tns-core-modules/application";
 
 declare var android;
 
-@JavaProxy("com.myna.hahama.wxapi.WXEntryActivity")
+// YOUR_APP_ID.wxapi.WXEntryActivity 
+@JavaProxy("net.sourceforge.simcpux.wxapi.WXEntryActivity")
 @Interfaces([com.tencent.mm.opensdk.openapi.IWXAPIEventHandler])
 class WXEntryActivity extends android.support.v7.app.AppCompatActivity implements com.tencent.mm.opensdk.openapi.IWXAPIEventHandler {
     public isNativeScriptActivity;

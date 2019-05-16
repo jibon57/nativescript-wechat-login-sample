@@ -72,26 +72,12 @@ class WXApiManagerDelegate extends NSObject implements WXApiDelegate {
      */
     public onResp(res: BaseResp) {
         console.log("BaseResp")
-        console.log(res.errCode);
-
-        switch (res.errCode) {
-            case 0:
-                setTimeout(() => {
-                    application.notify(<ApplicationEventData>{
-                        eventName: 'wxApiResponse',
-                        object: res,
-                        activity: this
-                    });
-                }, 500);
-                break;
-
-            case -2:
-                console.log("user canceled");
-                break;
-
-            default:
-                console.log("user refused to authorize");
-                break;
-        }
+        setTimeout(() => {
+            application.notify(<ApplicationEventData>{
+                eventName: 'wxApiResponse',
+                object: res,
+                activity: this
+            });
+        }, 500);
     }
 }

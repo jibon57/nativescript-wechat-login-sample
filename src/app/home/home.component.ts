@@ -27,12 +27,33 @@ export class HomeComponent implements OnInit {
 
             app.off("wxApiResponse", wxResponseHandle, this);
             console.log("wxApiResponse");
-            console.dir(res.object);
 
-            // must need to run under ngZone
-            t.ngZone.run(() => {
-                // t.routeExt.navigateByUrl("/profile");
-            })
+            let response = res.object;
+            console.dir(response);
+
+            switch (response.errCode) {
+                case 0:
+                    console.log("user permits login");
+                    console.log(response.code) // here you have the value of code which can be use to obtain wechat openid.
+
+                    // must need to run under ngZone if you have plan to navigate another page.
+                    t.ngZone.run(() => {
+                        // t.routeExt.navigateByUrl("/profile");
+                    });
+                    break;
+
+                case -2:
+                    console.log("user canceled");
+                    break;
+
+                case -4:
+                    console.log("user refused to authorize");
+                    break;
+
+                default:
+                    console.log("unknow error");
+                    break;
+            }
         }
     }
 

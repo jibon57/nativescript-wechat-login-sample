@@ -38,27 +38,17 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
 
     public onResp(res: com.tencent.mm.opensdk.modelbase.BaseResp) {
         console.log("onResp");
-        console.dir(res);
-        switch (res.errCode) {
-            case BaseResp.ErrCode.ERR_OK:
-                setTimeout(() => {
-                    app.notify(<AndroidActivityEventData>{
-                        eventName: 'wxApiResponse',
-                        object: res,
-                        activity: this
-                    });
-                }, 500);
-                break;
-            case BaseResp.ErrCode.ERR_USER_CANCEL:
-                console.log("user canceled");
-                break;
-            case BaseResp.ErrCode.ERR_AUTH_DENIED:
-                console.log("user refused to authorize");
-                break;
-        }
+        setTimeout(() => {
+            app.notify(<AndroidActivityEventData>{
+                eventName: 'wxApiResponse',
+                object: res,
+                activity: this
+            });
+        }, 500);
     }
+
     public onReq(res: com.tencent.mm.opensdk.modelbase.BaseReq) {
-        console.log("onReq: " + res.openId);
+        console.log("onReq");
     }
 
     public onSaveInstanceState(outState): void {

@@ -8,11 +8,13 @@ Example of Wechat Login for NativeScript. Open this files to check the code.
 
 4) wxapi.WXEntryActivity.android.ts
 
-5) home.component.ts
+5) main.ts
 
-6) app.component.ts
+6) home.component.ts
 
-7) AppRegister.android.ts (optional)
+7) app.component.ts
+
+8) AppRegister.android.ts (optional)
 
 
 

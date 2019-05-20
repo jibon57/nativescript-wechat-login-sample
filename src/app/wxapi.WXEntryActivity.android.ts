@@ -1,7 +1,7 @@
 import { setActivityCallbacks, AndroidActivityCallbacks } from "tns-core-modules/ui/frame";
-const BaseResp = com.tencent.mm.opensdk.modelbase.BaseResp;
 import * as app from "tns-core-modules/application";
 import { AndroidActivityEventData } from "tns-core-modules/application";
+import * as appSettings from "tns-core-modules/application-settings";
 
 declare var android;
 
@@ -24,7 +24,9 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
 
         console.log("onCreate");
 
-        this.api = com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(this, "wxd930ea5d5a258f4f", false);
+        let appID = appSettings.getString("WECHAT_APP_ID");
+
+        this.api = com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(this, appID, false);
 
         try {
             this.api.handleIntent(this.getIntent(), this);

@@ -1,5 +1,6 @@
 import { ApplicationEventData } from "tns-core-modules/application";
 import * as application from 'tns-core-modules/application';
+import * as appSettings from "tns-core-modules/application-settings";
 
 declare var UIResponder, UIApplicationDelegate, NSObject;
 
@@ -34,7 +35,10 @@ export function setupAppDeligate() {
 
     enableMultipleOverridesFor(appDelegate, 'applicationDidFinishLaunchingWithOptions', function (application, launchOptions) {
         console.log("applicationDidFinishLaunchingWithOptions");
-        WXApi.registerAppEnableMTA("wxd930ea5d5a258f4f", true);
+
+        let appID = appSettings.getString("WECHAT_APP_ID");
+        console.log("APPID", appID);
+        WXApi.registerAppEnableMTA(appID, true);
         return true;
     });
 

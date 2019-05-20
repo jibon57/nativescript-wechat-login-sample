@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import * as app from "tns-core-modules/application";
+import * as appSettings from "tns-core-modules/application-settings";
 
 @Component({
     selector: "ns-app",
@@ -9,7 +10,8 @@ import * as app from "tns-core-modules/application";
 export class AppComponent {
     constructor() {
         if (app.android) {
-            com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(app.android.context, "wxd930ea5d5a258f4f", false);
+            let appID = appSettings.getString("WECHAT_APP_ID");
+            com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(app.android.context, appID, false);
         }
         app.off("wxApiResponse");
     }

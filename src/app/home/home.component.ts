@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page";
 import { RouterExtensions } from "nativescript-angular/router";
 import * as app from "tns-core-modules/application";
+import * as appSettings from "tns-core-modules/application-settings";
 
 @Component({
     selector: "Home",
@@ -11,12 +12,8 @@ import * as app from "tns-core-modules/application";
 })
 export class HomeComponent implements OnInit {
 
-    private wechatApi;
-
     constructor(public page: Page, public routeExt: RouterExtensions, private ngZone: NgZone) {
-        if (app.android) {
-            this.wechatApi = com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(app.android.context, "wxd45ca3e9d692043f", false);
-        }
+
     }
 
     ngOnInit(): void {
@@ -62,10 +59,15 @@ export class HomeComponent implements OnInit {
      */
     public wechatLogin() {
         if (app.android) {
+
+            let appID = appSettings.getString("WECHAT_APP_ID");
+
+            let wechatApi = com.tencent.mm.opensdk.openapi.WXAPIFactory.createWXAPI(app.android.context, appID, false);
+
             let req = new com.tencent.mm.opensdk.modelmsg.SendAuth.Req();
             req.scope = "snsapi_userinfo";
             //req.state = "wechat_sdk_demo_test";
-            let tt = this.wechatApi.sendReq(req);
+            let tt = wechatApi.sendReq(req);
             console.log(tt);
 
         } else {

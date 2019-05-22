@@ -2,7 +2,7 @@ import * as appSettings from "tns-core-modules/application-settings";
 
 declare var android;
 
-// YOUR_APP_ID.wxapi.WXEntryActivity 
+// YOUR_APP_ID.AppRegister 
 @JavaProxy("net.sourceforge.simcpux.AppRegister")
 class AppRegister extends android.content.BroadcastReceiver {
     public onReceive(context, intent) {

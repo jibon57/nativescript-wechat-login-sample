@@ -8,6 +8,7 @@ package-lock.json
 # NativeScript Template
 *.js.map
 *.js
+*.css
 !webpack.config.js
 !nativescript-wechatsdk/*.js
 

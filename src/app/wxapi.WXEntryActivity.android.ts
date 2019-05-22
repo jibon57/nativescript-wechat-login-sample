@@ -38,6 +38,15 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
         this._callbacks.onCreate(this, savedInstanceState, super.onCreate);
     }
 
+    public onNewIntent(intent) {
+        super.onNewIntent(intent);
+
+        console.log("onNewIntent");
+
+        this.setIntent(intent);
+        this.api.handleIntent(intent, this);
+    }
+
     public onResp(res: com.tencent.mm.opensdk.modelbase.BaseResp) {
         console.log("onResp");
         setTimeout(() => {

@@ -42,9 +42,14 @@ class WXEntryActivity extends android.support.v7.app.AppCompatActivity implement
         super.onNewIntent(intent);
 
         console.log("onNewIntent");
-
         this.setIntent(intent);
-        this.api.handleIntent(intent, this);
+
+        try {
+            this.api.handleIntent(intent, this);
+        } catch (e) {
+            console.log("handleIntent error");
+            console.log(e);
+        }
     }
 
     public onResp(res: com.tencent.mm.opensdk.modelbase.BaseResp) {

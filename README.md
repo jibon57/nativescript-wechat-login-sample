@@ -1,3 +1,6 @@
+**Try this plugin https://github.com/jibon57/nativescript-wechat-login**
+
+
 Example of Wechat Login for NativeScript. Open this files to check the code.
 
 **Android:**
